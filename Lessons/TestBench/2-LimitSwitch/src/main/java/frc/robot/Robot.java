@@ -19,7 +19,7 @@ import frc.robot.utils.Candle;
 public class Robot extends TimedRobot {
   
   private final Candle candle = Candle.getInstance();
-  private final int limitPort = -1;
+  private final int limitPort = 0;
   private final DigitalInput limit = new DigitalInput(limitPort);
 
   /**
@@ -42,6 +42,12 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
     candle.periodic(); // Used to run the periodic in the Candle Util
+
+    if (limit.get() == true){
+      candle.setAllToColor(200, 42, 69);
+    } else{
+        candle.setAllToColor(100, 99, 2);
+    }
 
   }
 

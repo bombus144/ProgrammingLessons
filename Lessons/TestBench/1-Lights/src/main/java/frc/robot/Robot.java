@@ -26,6 +26,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    candle.changeLedState(LEDState.ColorFlow);
+    candle.configBrightness(kDefaultPeriod);
   }
 
   /**

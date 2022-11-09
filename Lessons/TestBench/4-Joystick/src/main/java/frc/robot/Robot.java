@@ -27,7 +27,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    
+
   }
 
   /**
@@ -65,7 +65,25 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
- public void teleopPeriodic() {}
+ public void teleopPeriodic() {
+  int r = 1;
+  int g = 1;
+  int b = 1;
+  double L = controller.getLeftTriggerAxis();
+  double R = controller.getRightTriggerAxis();
+  boolean A = controller.getAButton();
+  if( A == true) {
+    r = Math.round((float) L * 255f);
+    g = Math.round((float) R * 255f);
+    b = Math.round((float) L * (float) R * 255f);
+  } else {
+    r = Math.round((float) L * 100f);
+    g = Math.round((float) R * 205f);
+    b = 100;
+  }
+  candle.setAllToColor(r,g,b);
+ }
+
 
   /** This function is called once when the robot is disabled. */
   @Override
